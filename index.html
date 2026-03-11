@@ -1,0 +1,2054 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="script.js"></script> 
+<link rel="stylesheet" href="style.css">
+<title>jobs.in </title>
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+
+body{
+min-height:200vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+backdrop-filter: blur(12px);
+background: #f4f3f3;
+border-bottom:1px solid rgba(255,255,255,0.2);
+transition:0.4s;
+z-index:1000;
+}
+
+/* SCROLL EFFECT */
+
+.navbar.scrolled{
+padding:12px 8%;
+backdrop-filter: blur(18px);
+}
+
+/* LOGO */
+
+.logo{
+font-size:22px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+display:flex;
+gap:35px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:inherit;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.nav-links a:hover{
+opacity:.6;
+}
+
+/* HAMBURGER */
+
+.menu-btn{
+width:28px;
+height:22px;
+display:none;
+flex-direction:column;
+justify-content:space-between;
+cursor:pointer;
+}
+
+.menu-btn span{
+display:block;
+height:3px;
+width:100%;
+background:#000;
+transition:.4s;
+border-radius:3px;
+}
+
+/* HAMBURGER ANIMATION */
+
+.menu-btn.active span:nth-child(1){
+transform: rotate(45deg) translate(5px,5px);
+}
+
+.menu-btn.active span:nth-child(2){
+opacity:0;
+}
+
+.menu-btn.active span:nth-child(3){
+transform: rotate(-45deg) translate(6px,-6px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+top:0;
+right:-280px;
+width:260px;
+height:100vh;
+backdrop-filter: blur(18px);
+background: rgba(255,255,255,0.08);
+border-left:1px solid rgba(255,255,255,0.2);
+padding:90px 30px;
+display:flex;
+flex-direction:column;
+gap:25px;
+transition:.4s;
+z-index:999;
+}
+
+.sidebar a{
+text-decoration:none;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.sidebar a:hover{
+opacity:.6;
+color: white;
+}
+
+/* SIDEBAR ACTIVE */
+
+.sidebar.active{
+right:0;
+}
+
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.2);
+opacity:0;
+pointer-events:none;
+transition:.3s;
+}
+
+.overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.nav-links{
+display:none;
+}
+
+.menu-btn{
+display:flex;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar" id="navbar">
+
+<div class="logo">JobS</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+ <a href="aboutus.html">About</a>
+<a href="job.html">Jobs</a>
+<a href="contactus.html">Contact</a>
+</div>
+
+<!-- HAMBURGER -->
+
+<div class="menu-btn" id="menuBtn">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</nav>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+<a href="index.html">Home</a>
+ <a href="aboutus.html">About</a>
+<a href="job.html">Jobs</a>
+<a href="contactus.html">Contact</a>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<script>
+
+/* ELEMENTS */
+
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+/* TOGGLE MENU */
+
+menuBtn.onclick = () =>{
+
+menuBtn.classList.toggle("active");
+sidebar.classList.toggle("active");
+overlay.classList.toggle("active");
+
+}
+
+/* CLOSE ON OVERLAY */
+
+overlay.onclick = () =>{
+
+menuBtn.classList.remove("active");
+sidebar.classList.remove("active");
+overlay.classList.remove("active");
+
+}
+
+/* SCROLL NAVBAR EFFECT */
+
+window.addEventListener("scroll",function(){
+
+let navbar = document.getElementById("navbar");
+
+if(window.scrollY > 50){
+navbar.classList.add("scrolled");
+}
+else{
+navbar.classList.remove("scrolled");
+}
+
+});
+
+</script>
+
+<!--------------------------------------------------->
+ 
+<style>
+
+/* HERO SECTION */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 8% 60px;
+text-align:center;
+}
+
+/* HERO CONTENT */
+
+.hero-content{
+max-width:900px;
+animation: fadeUp 1s ease;
+}
+
+/* TITLE */
+
+.hero h1{
+font-size:48px;
+font-weight:700;
+margin-bottom:20px;
+line-height:1.3;
+}
+
+/* AUTO TYPING */
+
+.typing{
+border-right:3px solid;
+padding-right:5px;
+color: #4f46e5;
+}
+
+/* SUBTEXT */
+
+.hero p{
+font-size:18px;
+margin-bottom:40px;
+opacity:0.8;
+}
+
+/* SEARCH BOX */
+
+.search-box{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+/* INPUT */
+
+.search-box input{
+width:350px;
+max-width:100%;
+padding:14px 16px;
+border-radius:8px;
+border:1px solid #ddd;
+outline:none;
+font-size:15px;
+}
+
+.search-box input:hover{
+  border: 1px solid #4f46e5;
+  
+}
+/* BUTTON */
+
+.search-box button{
+padding:14px 26px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:15px;
+transition:.3s;
+}
+
+.search-box button:hover{
+transform:translateY(-2px);
+background-color: #4f46e5;
+color: white;
+}
+
+/* SCROLL ANIMATION */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.search-box{
+flex-direction:column;
+}
+
+.search-box input{
+width:100%;
+}
+
+.search-box button{
+width:100%;
+}
+
+}
+
+</style>
+ 
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+Find Your Dream Job as a
+<span class="typing" id="typing"></span>
+</h1>
+
+<p>
+Discover thousands of job opportunities from top companies and build your future today.
+</p>
+
+<div class="search-box">
+
+<input type="text" placeholder="Search jobs, companies, skills">
+
+<button>Search Jobs</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* AUTO TYPING EFFECT */
+
+const jobs = [
+"Developer",
+"UI/UX Designer",
+"Data Analyst",
+"Digital Marketer",
+"Software Engineer"
+];
+
+let i = 0;
+let j = 0;
+let currentJob = "";
+let isDeleting = false;
+
+function typeEffect(){
+
+currentJob = jobs[i];
+
+if(!isDeleting){
+document.getElementById("typing").textContent = currentJob.substring(0,j++);
+}else{
+document.getElementById("typing").textContent = currentJob.substring(0,j--);
+}
+
+if(!isDeleting && j === currentJob.length){
+isDeleting = true;
+setTimeout(typeEffect,1000);
+return;
+}
+
+if(isDeleting && j === 0){
+isDeleting = false;
+i = (i+1) % jobs.length;
+}
+
+setTimeout(typeEffect, isDeleting ? 60 : 120);
+
+}
+
+typeEffect();
+
+</script>
+
+ <!-- --------------------------------------------------- -->
+   <style>
+    .about{
+padding:100px 8%;
+}
+
+.about-wrapper{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:80px;
+flex-wrap:wrap;
+}
+
+/* IMAGES */
+
+.about-images{
+position:relative;
+width:420px;
+max-width:100%;
+}
+
+.about-images img{
+width:260px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.img1{
+position:relative;
+z-index:2;
+}
+
+.img2{
+position:absolute;
+bottom:-40px;
+right:-40px;
+z-index:1;
+}
+
+/* FLOATING SHAPES */
+
+.shape{
+position:absolute;
+border-radius:50%;
+animation:float 6s ease-in-out infinite;
+}
+
+.shape1{
+width:60px;
+height:60px;
+top:-20px;
+left:-20px;
+background:rgba(0,0,0,0.05);
+}
+
+.shape2{
+width:40px;
+height:40px;
+bottom:-30px;
+left:40px;
+background:rgba(0,0,0,0.08);
+}
+
+@keyframes float{
+
+0%{transform:translateY(0px);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0px);}
+
+}
+
+/* CONTENT */
+
+.about-content{
+max-width:520px;
+}
+
+.about-content h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.typing-about{
+border-right:3px solid;
+padding-right:5px;
+color: #4f46e5;
+}
+
+.about-content p{
+font-size:16px;
+line-height:1.7;
+margin-bottom:18px;
+opacity:.8;
+}
+
+.about-btn{
+padding:12px 26px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:15px;
+transition:.3s;
+}
+
+.about-btn:hover{
+transform:translateY(-2px);
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.about-wrapper{
+flex-direction:column;
+text-align:center;
+}
+
+.img2{
+position:relative;
+bottom:0;
+right:0;
+margin-top:20px;
+}
+
+}
+   </style>
+   <section class="about">
+
+<div class="about-wrapper">
+
+<!-- IMAGES -->
+
+<div class="about-images reveal">
+
+<img class="img1" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+<img class="img2" src="https://images.unsplash.com/photo-1551434678-e076c223a692">
+
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+
+</div>
+
+
+<!-- CONTENT -->
+
+<div class="about-content reveal">
+
+<h2>About <span class="typing-about"></span></h2>
+
+<p>
+We help talented professionals connect with leading companies around the world.
+Our platform simplifies job searching and helps organizations find the perfect
+talent faster.
+</p>
+
+<p>
+Thousands of job seekers trust our platform to build successful careers
+while companies discover innovative professionals.
+</p>
+
+ <button class="about-btn" onclick="openPage()">Learn More</button>
+
+</div>
+
+</div>
+
+</section>
+<script>
+   
+function openPage(){
+window.location.href="aboutus.html";
+}
+/* AUTO TYPING */
+
+const words = [
+"Our Company",
+"Our Mission",
+"Our Platform",
+"Our Story"
+];
+
+let r=0;
+let s=0;
+let current="";
+let deleting=false;
+
+function typing(){
+
+current = words[r];
+
+if(!deleting){
+document.querySelector(".typing-about").textContent = current.substring(0,s++);
+}else{
+document.querySelector(".typing-about").textContent = current.substring(0,s--);
+}
+
+if(!deleting && s === current.length){
+deleting=true;
+setTimeout(typing,1200);
+return;
+}
+
+if(deleting && s === 0){
+deleting=false;
+r=(r+1)%words.length;
+}
+
+setTimeout(typing,deleting?60:120);
+
+}
+
+typing();
+
+
+</script> 
+<!-- ----------------------------------------------- -->
+ <style>
+  .jobs-area{
+
+padding:60px 8%;
+
+text-align:center;
+
+}
+
+.auto-title{
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+.jobs-text{
+
+max-width:600px;
+
+margin:auto;
+
+margin-bottom:40px;
+
+color:#666;
+
+}
+
+
+/* GRID */
+
+.jobs-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:30px;
+
+}
+
+
+/* GLASS CARD */
+
+.job-box{
+
+padding:25px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.15);
+
+backdrop-filter:blur(14px);
+
+border:1px solid rgba(255,255,255,0.3);
+
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+text-align:left;
+
+transition:0.4s;
+
+}
+
+.job-box:hover{
+
+transform:translateY(-8px) scale(1.02);
+
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+
+}
+
+
+/* HEADER */
+
+.company-head{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:12px;
+
+}
+
+.company-head img{
+
+width:40px;
+
+height:40px;
+
+border-radius:8px;
+
+}
+
+.company-head h3{
+
+font-size:18px;
+
+}
+
+
+/* INFO */
+
+.job-info p{
+
+font-size:14px;
+
+margin:4px 0;
+
+}
+
+
+/* TAGS */
+
+.job-tags{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-top:10px;
+
+}
+
+.job-tags span{
+
+padding:4px 12px;
+
+border-radius:20px;
+
+font-size:12px;
+
+background:rgba(0,0,0,0.1);
+
+}
+
+
+/* BUTTON */
+
+.apply-btn{
+
+margin-top:15px;
+
+padding:8px 18px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:14px;
+
+}
+#autoWords{
+  color: #4f46e5;
+} 
+.apply-btn:hover{
+  background-color: #c4bfbf;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+
+opacity:1;
+
+transform:translateY(60px);
+
+transition:0.8s;
+
+}
+
+.reveal.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+ </style>
+ <section class="jobs-area">
+
+<h2 class="auto-title">
+Careers for <span id="autoWords"></span>
+</h2>
+
+<p class="jobs-text">
+Discover opportunities with innovative companies and build the
+career you've always wanted.
+</p>
+ <div class="jobs-grid">
+
+<!-- 1 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<h3>Frontend Developer</h3>
+</div>
+<div class="job-info">
+<p>Company: Google</p>
+<p>Location: Remote</p>
+<p>Salary: ₹8L – ₹15L</p>
+</div>
+<div class="job-tags">
+<span>Full Time</span>
+<span>React</span>
+<span>Remote</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 2 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732221.png">
+<h3>UI/UX Designer</h3>
+</div>
+<div class="job-info">
+<p>Company: Microsoft</p>
+<p>Location: Bangalore</p>
+<p>Salary: ₹6L – ₹12L</p>
+</div>
+<div class="job-tags">
+<span>Design</span>
+<span>Full Time</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 3 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968852.png">
+<h3>Backend Developer</h3>
+</div>
+<div class="job-info">
+<p>Company: Amazon</p>
+<p>Location: Hyderabad</p>
+<p>Salary: ₹10L – ₹18L</p>
+</div>
+<div class="job-tags">
+<span>NodeJS</span>
+<span>Full Time</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 4 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png">
+<h3>Data Analyst</h3>
+</div>
+<div class="job-info">
+<p>Company: Netflix</p>
+<p>Location: Mumbai</p>
+<p>Salary: ₹7L – ₹14L</p>
+</div>
+<div class="job-tags">
+<span>Analytics</span>
+<span>Python</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 5 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/888/888859.png">
+<h3>Mobile App Developer</h3>
+</div>
+<div class="job-info">
+<p>Company: Apple</p>
+<p>Location: Remote</p>
+<p>Salary: ₹9L – ₹16L</p>
+</div>
+<div class="job-tags">
+<span>iOS</span>
+<span>Swift</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 6 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+<h3>Digital Marketer</h3>
+</div>
+<div class="job-info">
+<p>Company: Adobe</p>
+<p>Location: Delhi</p>
+<p>Salary: ₹5L – ₹10L</p>
+</div>
+<div class="job-tags">
+<span>Marketing</span>
+<span>SEO</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 7 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
+<h3>Cloud Engineer</h3>
+</div>
+<div class="job-info">
+<p>Company: IBM</p>
+<p>Location: Pune</p>
+<p>Salary: ₹10L – ₹20L</p>
+</div>
+<div class="job-tags">
+<span>AWS</span>
+<span>Cloud</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 8 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/888/888879.png">
+<h3>Cyber Security</h3>
+</div>
+<div class="job-info">
+<p>Company: Cisco</p>
+<p>Location: Hyderabad</p>
+<p>Salary: ₹11L – ₹21L</p>
+</div>
+<div class="job-tags">
+<span>Security</span>
+<span>Network</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 9 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968866.png">
+<h3>Software Engineer</h3>
+</div>
+<div class="job-info">
+<p>Company: Intel</p>
+<p>Location: Bangalore</p>
+<p>Salary: ₹12L – ₹22L</p>
+</div>
+<div class="job-tags">
+<span>C++</span>
+<span>Full Time</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 10 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
+<h3>DevOps Engineer</h3>
+</div>
+<div class="job-info">
+<p>Company: Oracle</p>
+<p>Location: Chennai</p>
+<p>Salary: ₹11L – ₹19L</p>
+</div>
+<div class="job-tags">
+<span>Docker</span>
+<span>Kubernetes</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 11 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+<h3>Product Manager</h3>
+</div>
+<div class="job-info">
+<p>Company: Meta</p>
+<p>Location: Remote</p>
+<p>Salary: ₹14L – ₹25L</p>
+</div>
+<div class="job-tags">
+<span>Management</span>
+<span>Strategy</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+</div>
+
+<!-- 12 -->
+<div class="job-box reveal">
+<div class="company-head">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968719.png">
+<h3>AI Engineer</h3>
+</div>
+<div class="job-info">
+<p>Company: OpenAI</p>
+<p>Location: Remote</p>
+<p>Salary: ₹20L – ₹35L</p>
+</div>
+<div class="job-tags">
+<span>AI</span>
+<span>Machine Learning</span>
+</div>
+<button class="apply-btn" onclick="openPage()">Apply Now</button>
+ </div>
+</div>
+</section>
+ 
+<script>
+  function openPage(){
+window.location.href="submitpage.html";
+}
+  /* AUTO TYPING */
+
+const rolesList = [
+"Developers",
+"Designers",
+"Engineers",
+"Analysts",
+"Specialists"
+];
+
+let roleIndex = 0;
+let letterIndex = 0;
+let deletingState = false;
+
+function typingEffect(){
+
+const textArea = document.getElementById("autoWords");
+const currentRole = rolesList[roleIndex];
+
+if(!deletingState){
+
+textArea.textContent = currentRole.substring(0, letterIndex++);
+if(letterIndex > currentRole.length){
+
+deletingState = true;
+setTimeout(typingEffect,1200);
+return;
+
+}
+
+}else{
+
+textArea.textContent = currentRole.substring(0, letterIndex--);
+
+if(letterIndex === 0){
+
+deletingState = false;
+roleIndex = (roleIndex + 1) % rolesList.length;
+
+}
+
+}
+
+setTimeout(typingEffect, deletingState ? 60 : 120);
+
+}
+
+typingEffect();
+
+
+
+/* SCROLL REVEAL */
+
+const revealItems = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",()=>{
+
+revealItems.forEach(item=>{
+
+let elementTop = item.getBoundingClientRect().top;
+let windowHeight = window.innerHeight;
+
+if(elementTop < windowHeight - 100){
+
+item.classList.add("show");
+
+}
+
+});
+
+});
+</script>
+<!-- ------------------------------------------------ -->
+<style>
+  .typing-header{
+
+font-size:34px;
+
+text-align:center;
+
+margin-bottom:20px;
+
+}
+
+#typingText{
+
+color:#4f46e5;
+
+border-right:3px solid;
+
+padding-right:5px;
+
+animation:blink 0.7s infinite;
+
+}
+
+@keyframes blink{
+
+0%{border-color:transparent;}
+50%{border-color:#4f46e5;}
+100%{border-color:transparent;}
+
+}
+  .testimonials-section{
+
+padding:80px 8%;
+
+text-align:center;
+
+}
+
+.test-title{
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+.test-sub{
+
+color:#666;
+
+max-width:600px;
+
+margin:auto;
+
+margin-bottom:50px;
+
+}
+
+
+/* GRID */
+
+.testimonials-container{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:30px;
+
+}
+
+
+/* CARD */
+
+.testimonial-card{
+
+padding:30px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,0.2);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.3);
+
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+text-align:left;
+
+transition:0.4s;
+
+}
+
+.testimonial-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+
+}
+
+
+/* USER */
+
+.user-info{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:15px;
+
+}
+
+.user-info img{
+
+width:50px;
+
+height:50px;
+
+border-radius:50%;
+
+}
+
+.user-info h4{
+
+font-size:16px;
+
+}
+
+.user-info span{
+
+font-size:13px;
+
+color:#777;
+
+}
+
+
+/* REVIEW */
+
+.review{
+
+font-size:14px;
+
+line-height:1.6;
+
+color:#444;
+
+}
+
+
+/* SCROLL ANIMATION */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(60px);
+
+transition:0.8s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+</style>
+
+<section class="testimonials-section">
+
+<h2 class="typing-header">
+Trusted by <span id="typingText"></span>
+</h2>
+
+<p class="test-sub">
+Thousands of professionals trust our platform to find their dream jobs.
+</p>
+
+<div class="testimonials-container">
+
+<!-- CARD 1 -->
+
+<div class="testimonial-card reveal">
+
+<div class="user-info">
+<img src="https://randomuser.me/api/portraits/women/44.jpg">
+<div>
+<h4>Riya Sharma</h4>
+<span>Frontend Developer</span>
+</div>
+</div>
+
+<p class="review">
+"This platform helped me land a great frontend developer role within
+two weeks. The job listings are high quality."
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="testimonial-card reveal">
+
+<div class="user-info">
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+<div>
+<h4>Aman Verma</h4>
+<span>UI/UX Designer</span>
+</div>
+</div>
+
+<p class="review">
+"I love the clean design and easy job search filters. It made finding
+my dream job much easier."
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="testimonial-card reveal">
+
+<div class="user-info">
+<img src="https://randomuser.me/api/portraits/men/76.jpg">
+<div>
+<h4>Rahul Mehta</h4>
+<span>Backend Engineer</span>
+</div>
+</div>
+
+<p class="review">
+"Excellent platform for developers. I received multiple interview
+calls after applying here."
+</p>
+
+</div>
+
+</div>
+
+</section>
+<script> 
+  const revealElements = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", function(){
+
+revealElements.forEach(el => {
+
+const top = el.getBoundingClientRect().top;
+const windowHeight = window.innerHeight;
+
+if(top < windowHeight - 100){
+
+el.classList.add("active");
+
+}
+
+});
+
+});
+const typingWords = [
+"Developers",
+"Designers",
+"Engineers",
+"Freelancers",
+"Job Seekers"
+];
+
+let wordPointer = 0;
+let charPointer = 0;
+let deletingMode = false;
+
+function autoTyping(){
+
+const textElement = document.getElementById("typingText");
+
+let currentWord = typingWords[wordPointer];
+
+if(!deletingMode){
+
+textElement.textContent = currentWord.substring(0,charPointer++);
+
+if(charPointer > currentWord.length){
+
+deletingMode = true;
+
+setTimeout(autoTyping,1200);
+
+return;
+
+}
+
+}
+
+else{
+
+textElement.textContent = currentWord.substring(0,charPointer--);
+
+if(charPointer === 0){
+
+deletingMode = false;
+
+wordPointer = (wordPointer + 1) % typingWords.length;
+
+}
+
+}
+
+setTimeout(autoTyping, deletingMode ? 60 : 120);
+
+}
+
+autoTyping();
+</script>
+
+<!-- ------------------------------------------------------- -->
+<style>
+  /* NEWSLETTER */
+
+.premium-newsletter{
+
+padding:90px 8%;
+
+position:relative;
+
+text-align:center;
+
+}
+
+.newsletter-card{
+
+max-width:700px;
+
+margin:auto;
+
+padding:50px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.2);
+
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.3);
+
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+
+}
+
+.newsletter-title{
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+.newsletter-title span{
+
+color:#6366f1;
+
+}
+
+.newsletter-text{
+
+color:#666;
+
+margin-bottom:25px;
+
+}
+
+
+/* FORM */
+
+.newsletter-form{
+
+display:flex;
+
+justify-content:center;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+}
+
+.newsletter-form input{
+
+padding:12px 16px;
+
+border-radius:8px;
+
+border:1px solid #ddd;
+
+min-width:260px;
+
+outline:none;
+
+}
+
+.newsletter-form input:hover{
+  border:1px solid #4f46e5;
+}
+.subscribe-btn{
+
+padding:12px 22px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+.subscribe-btn:hover{
+
+transform:translateY(-2px);
+background-color: coral;
+color: white;
+}
+
+
+/* FLOATING ICONS */
+
+.newsletter-icons{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+}
+
+.newsletter-icons img{
+
+position:absolute;
+
+width:40px;
+
+opacity:1;
+
+animation:float 6s infinite ease-in-out;
+
+}
+
+.newsletter-icons img:nth-child(1){
+
+top:15%;
+
+left:10%;
+
+}
+
+.newsletter-icons img:nth-child(2){
+
+top:60%;
+
+left:80%;
+
+}
+
+.newsletter-icons img:nth-child(3){
+
+top:70%;
+
+left:20%;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+
+}
+ 
+/* SCROLL ANIMATION */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(60px);
+
+transition:.8s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+</style>  
+<!-- NEWSLETTER -->
+
+<section class="premium-newsletter reveal">
+
+<div class="newsletter-card">
+
+<h2 class="newsletter-title">
+Get Weekly <span>Job Updates</span>
+</h2>
+
+<p class="newsletter-text">
+Subscribe to receive the latest job openings and career tips directly in your inbox.
+</p>
+
+<div class="newsletter-form">
+
+<input type="email" placeholder="Enter your email address">
+
+<button class="subscribe-btn">Subscribe</button>
+
+</div>
+
+</div>
+
+
+<!-- FLOATING ICONS -->
+
+<div class="newsletter-icons">
+
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732221.png">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968852.png">
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Footer</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{ 
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* FOOTER */
+
+.footer{ 
+background:#fbfbfb ;
+color:#fff;
+padding:60px 8% 30px;
+margin-top:auto;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+}
+
+/* COLUMN */
+
+.footer-col h3{
+font-size:20px;
+margin-bottom:20px;
+position:relative;
+color:#000000;
+}
+
+.footer-col h3::after{
+content:"";
+width:40px;
+height:3px;
+background:#38bdf8;
+position:absolute;
+left:0;
+bottom:-6px;
+}
+
+.footer-col p{
+font-size:14px;
+line-height:1.7;
+color:#000000;
+text-align: left;
+}
+
+/* LINKS */
+
+.footer-col ul{
+list-style:none; 
+}
+
+.footer-col ul li{
+margin:10px 0; }
+
+.footer-col ul li a{
+text-decoration:none;
+color:#000000;
+font-size:14px;
+transition:.3s; 
+}
+
+.footer-col ul li a:hover{
+color:#4f46e5;
+padding-left:5px;
+}
+
+/* SOCIAL ICONS */
+
+.social-icons{
+margin-top:15px;
+}
+
+.social-icons a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:38px;
+height:38px;
+border-radius:50%;
+background:#e8e8e8;
+color:#fff;
+margin-right:10px;
+transition:.3s;
+}
+
+.social-icons a:hover{
+background:#d0d0d0;
+transform:translateY(-4px);
+}
+
+/* NEWSLETTER */
+
+.newsletter input{
+width:100%;
+padding:10px;
+border:1px solid #e8e8e8; 
+ background-color: white;
+color:#000;
+outline:none;
+border-radius:6px;
+margin-bottom:10px;
+}
+
+.newsletter button{
+width:100%;
+padding:10px;
+border:1px solid #e8e8e8; 
+ background-color: white;
+color:#666;
+border-radius:6px;
+cursor:pointer;
+transition:.3s;
+text-align: start;
+}
+
+.newsletter button:hover{
+color:#000000;
+}
+.newsletter input:hover{
+color: #000;
+}
+/* COPYRIGHT */
+
+.footer-bottom{
+text-align:center;
+margin-top:40px;
+border-top:1px solid #334155;
+padding-top:20px;
+font-size:14px;
+color:#000000;
+}
+
+
+/* RESPONSIVE */
+
+/* 900px */
+
+@media(max-width:900px){
+
+.footer-container{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* 600px */
+
+@media(max-width:600px){
+
+.footer{
+padding:50px 6%;
+ 
+}
+
+.footer-container{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.footer-col h3::after{
+left:50%;
+transform:translateX(-50%);
+}
+
+.social-icons{
+justify-content:center;
+}
+
+}
+
+/* 300px */
+
+@media(max-width:300px){
+
+.footer{
+padding:40px 5%;
+}
+
+.footer-col h3{
+font-size:18px;
+}
+
+.footer-col p,
+.footer-col ul li a{
+font-size:13px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-col">
+<h3>About Us</h3>
+<p>
+We build modern responsive websites with premium UI,
+smooth animations and high performance design for
+startups and companies.
+</p>
+</div>
+
+
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Jobs</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</div>
+
+
+<div class="footer-col">
+<h3>Services</h3>
+<ul>
+<li><a href="#">Web Design</a></li>
+<li><a href="#">UI/UX Design</a></li>
+<li><a href="#">Development</a></li>
+<li><a href="#">SEO</a></li>
+</ul>
+</div>
+
+
+<div class="footer-col">
+<h3>Newsletter</h3>
+
+<div class="newsletter">
+<input type="email" placeholder="Enter your email">
+<button>Subscribe</button>
+</div>
+
+<div class="social-icons">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+© 2026 YourCompany. All Rights Reserved
+</div>
+
+</footer>
+
+</body>
+</html>
+ 
+<script>
+  const revealEl = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+
+revealEl.forEach(el => {
+
+const elementTop = el.getBoundingClientRect().top;
+
+const windowHeight = window.innerHeight;
+
+if(elementTop < windowHeight - 100){
+
+el.classList.add("active");
+
+}
+
+});
+
+});
+</script>
+</body>
+</html>

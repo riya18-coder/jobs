@@ -1,0 +1,289 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apply Job</title>
+
+<!-- AOS Animation -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:white;
+}
+
+/* HEADER */
+
+header{
+padding:70px 8%;
+text-align:center;
+}
+
+header h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+header p{
+color:#666;
+}
+
+/* FLOATING ICONS */
+
+.floating-icons i{
+position:absolute;
+color:#00b894;
+font-size:24px;
+opacity:.2;
+animation:float 6s infinite linear;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+}
+
+.icon1{top:20%;left:10%}
+.icon2{top:30%;right:15%}
+.icon3{bottom:20%;left:20%}
+.icon4{bottom:25%;right:10%}
+
+/* SECTION */
+
+.apply-section{
+padding:80px 8%;
+display:flex;
+justify-content:center;
+}
+
+/* GLASS FORM */
+
+.form-box{
+width:100%;
+max-width:450px;
+padding:35px;
+border-radius:15px;
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(12px);
+border:1px solid rgba(0,0,0,0.1);
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.form-box h2{
+text-align:center;
+margin-bottom:25px;
+}
+
+/* INPUT */
+
+.input-group{
+margin-bottom:18px;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+font-size:14px;
+}
+
+input:focus,textarea:focus{
+outline:none;
+border-color:#00b894;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:13px;
+background:#00b894;
+color:white;
+border:none;
+border-radius:8px;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#019874;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:flex;
+justify-content:center;
+align-items:center;
+visibility:hidden;
+opacity:0;
+transition:.4s;
+}
+
+.popup.active{
+visibility:visible;
+opacity:1;
+}
+
+.popup-box{
+background:white;
+padding:35px;
+border-radius:10px;
+text-align:center;
+width:300px;
+}
+
+.popup-box h3{
+margin-bottom:10px;
+}
+
+.popup-box button{
+margin-top:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+header h1{
+font-size:28px;
+}
+
+.apply-section{
+padding:60px 5%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING ICONS -->
+
+<div class="floating-icons">
+<i class="fas fa-briefcase icon1"></i>
+<i class="fas fa-laptop-code icon2"></i>
+<i class="fas fa-chart-line icon3"></i>
+<i class="fas fa-user-tie icon4"></i>
+</div>
+
+<!-- HEADER -->
+
+<header data-aos="fade-up">
+
+<h1>Join Our Team</h1>
+<p>Upload your resume and apply for exciting opportunities</p>
+
+</header>
+
+<!-- FORM -->
+
+<section class="apply-section">
+
+<div class="form-box" data-aos="zoom-in">
+
+<h2>Apply For Job</h2>
+
+<form id="jobForm">
+
+<div class="input-group" data-aos="fade-right">
+<input type="text" placeholder="Full Name" required>
+</div>
+
+<div class="input-group" data-aos="fade-left">
+<input type="email" placeholder="Email Address" required>
+</div>
+
+<div class="input-group" data-aos="fade-right">
+<input type="tel" placeholder="Phone Number" required>
+</div>
+
+<div class="input-group" data-aos="fade-left">
+<textarea rows="4" placeholder="Your Message"></textarea>
+</div>
+
+<div class="input-group" data-aos="zoom-in">
+<input type="file" required>
+</div>
+
+<button type="submit" data-aos="fade-up">Submit Application</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- SUCCESS POPUP -->
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+<h3>Application Submitted 🎉</h3>
+<p>Your resume has been successfully uploaded.</p>
+
+<button onclick="closePopup()">OK</button>
+</div>
+
+</div>
+
+<!-- JS -->
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+duration:1200,
+once:true
+});
+
+const form=document.getElementById("jobForm");
+const popup=document.getElementById("popup");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+popup.classList.add("active");
+
+form.reset();
+
+});
+
+function closePopup(){
+
+popup.classList.remove("active");
+
+}
+
+</script>
+
+</body>
+</html>
